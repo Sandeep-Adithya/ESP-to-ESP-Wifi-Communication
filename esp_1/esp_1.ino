@@ -1,7 +1,7 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-uint8_t broadcastAddress[] = {0xC8, 0xF0, 0x9E, 0xF2, 0x74, 0x18}; // mac for esp_suit
+uint8_t broadcastAddress[] = {0xC8, 0xF0, 0x9E, 0xF2, 0x74, 0x18}; // mac of ESP_2
 
 String msg_send; //message to be sent to 2
 String msg_recv; //message to be recieved from 2
@@ -65,7 +65,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   msg_send = "Message to be sent to 2";
 
-  // send the required temp
+  // send the message
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &msg_send, sizeof(msg_send));
 
   if (result == ESP_OK) {
